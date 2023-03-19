@@ -11,7 +11,7 @@
 @media (max-width: 768px) {
   .profile__username {
     text-align: center;
-    font-size: 27px ;
+    font-size: 27px;
     line-height: 1.21;
   }
 }
