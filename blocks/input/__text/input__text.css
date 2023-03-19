@@ -1,0 +1,23 @@
+.input__text {
+  width: 358px;
+  height: 27px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #000000;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2) ;
+}
+
+.input__text:last-of-type {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .input__text {
+    width: 238px;
+  }
+}

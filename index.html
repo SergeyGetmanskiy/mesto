@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+<body class="body">
+  <div class="page">
+    <div class="page__container">
+      <header class="header">
+        <img class="header__logo" src="./images/Logo.png" alt="Логотип">
+      </header>
+      <main class="main">
+        <section class="profile">
+          <div class="profile__image-container">
+            <img class="profile__image" src="./images/Cousteau.jpg" alt="Аватарка">
+          </div>
+          <div class="profile__info">
+            <h2 class="profile__username">Жак-Ив Кусто</h2>
+            <p class="profile__useroccupation">Исследователь океана</p>
+            <button class="profile__edit-button">
+              <img class="rectangle rectangle_place_edit-button" src="./images/Vector_profile_edit-button.png" alt="Редактировать">
+            </button>
+          </div>
+          <button class="profile__add-button">
+            <img class="rectangle rectangle_place_add-button" src="./images/Vector_profile_add-button.png" alt="Добавить">
+          </button>
+        </section>
+        <section class="elements">
+          <div class="element">
+            <div class="element__top">
+              <div class="element__mask">
+                <img class="element__image" src="./images/Karachaevsk-kirill-pershin-1088404-unsplash.jpg" alt="Фотография места">
+              </div>
+            </div>
+            <div class="element__bottom">
+              <h3 class="element__location">Карачаевск</h3>
+              <button class="element__like-button element__like-button_disabled">
+                <img src="./images/Like-button_disabled.svg" alt="Лайк">
+              </button>
+            </div>
+          </div>
+          <div class="element">
+            <div class="element__top">
+              <div class="element__mask">
+                <img class="element__image" src="./images/Elbrus-kirill-pershin-1404681-unsplash.jpg" alt="Фотография места">
+              </div>
+            </div>
+            <div class="element__bottom">
+              <h3 class="element__location">Гора Эльбрус</h3>
+              <button class="element__like-button element__like-button_disabled">
+                <img src="./images/Like-button_disabled.svg" alt="Лайк">
+              </button>
+            </div>
+          </div>
+          <div class="element">
+            <div class="element__top">
+              <div class="element__mask">
+                <img class="element__image" src="./images/Dombai-kirill-pershin-1556355-unsplash.jpg" alt="Фотография места">
+              </div>
+            </div>
+            <div class="element__bottom">
+              <h3 class="element__location">Домбай</h3>
+              <button class="element__like-button element__like-button_disabled">
+                <img src="./images/Like-button_disabled.svg" alt="Лайк">
+              </button>
+            </div>
+          </div>
+          <div class="element">
+            <div class="element__top">
+              <div class="element__mask">
+                <img class="element__image" src=".//images/Elbrus-kirill-pershin-1404681-unsplash.jpg" alt="Фотография места">
+              </div>
+            </div>
+            <div class="element__bottom">
+              <h3 class="element__location">Гора Эльбрус</h3>
+              <button class="element__like-button element__like-button_disabled">
+                <img src="./images/Like-button_disabled.svg" alt="Лайк">
+              </button>
+            </div>
+          </div>
+          <div class="element">
+            <div class="element__top">
+              <div class="element__mask">
+                <img class="element__image" src="./images/Dombai-kirill-pershin-1556355-unsplash.jpg" alt="Фотография места">
+              </div>
+            </div>
+            <div class="element__bottom">
+              <h3 class="element__location">Домбай</h3>
+              <button class="element__like-button element__like-button_disabled">
+                <img src="./images/Like-button_disabled.svg" alt="Лайк">
+              </button>
+            </div>
+          </div>
+          <div class="element">
+            <div class="element__top">
+              <div class="element__mask">
+                <img class="element__image" src="./images/Karachaevsk-kirill-pershin-1088404-unsplash.jpg" alt="Фотография места">
+              </div>
+            </div>
+            <div class="element__bottom">
+              <h3 class="element__location">Карачаево-Черкессия</h3>
+              <button class="element__like-button element__like-button_disabled">
+                <img src="./images/Like-button_disabled.svg" alt="Лайк">
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="popup" >
+          <div class="popup__container">
+            <div class="popup__close-btn"><img src="./images/Close_Icon.png" alt="Закрыть"></div>
+            <div class="form">
+              <h3 class="form__title">Редактировать профиль</h3>
+              <form class="input">
+                <input class="input__text input__text_type_username" type="text" placeholder="Жак-Ив Кусто" >
+                <input class="input__text input__text_type_useroccupation" type="text" placeholder="Исследователь океана" >
+                <button class="form__submit-btn">
+                  Сохранить
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2020 Mesto Russia</p>
+      </footer>
+    </div>
+  </div>
+  <script src="./script/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.profile__image-container {
+  max-width: 168px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .profile__image-container {
+    margin-bottom: 22px;
+  }
+}

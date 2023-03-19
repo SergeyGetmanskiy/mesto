@@ -1,0 +1,20 @@
+.popup__close-btn {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  cursor: url(../../../images/Cursor.png) 10 2, default;
+}
+
+.popup__close-btn:hover {
+  opacity: .6;
+}
+
+@media (max-width: 768px) {
+  .popup__close-btn {
+    top: -36px;
+    right: 0;
+    display: flex;
+    width: 20px;
+    height: 20px;
+  }
+}
