@@ -1,4 +1,4 @@
-.profile__username {
+.profile__user-name {
   grid-area: username;
   margin: 0;
   font-weight: 500;
@@ -9,7 +9,7 @@
 }
 
 @media (max-width: 768px) {
-  .profile__username {
+  .profile__user-name {
     text-align: center;
     font-size: 27px;
     line-height: 1.21;

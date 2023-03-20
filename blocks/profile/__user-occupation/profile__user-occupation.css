@@ -1,4 +1,4 @@
-.profile__useroccupation {
+.profile__user-occupation {
   grid-area: useroccupation;
   margin: 0;
   font-weight: 400;
@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 768px) {
-  .profile__useroccupation {
+  .profile__user-occupation {
     text-align: center;
     font-size: 14px;
     line-height: 1.21;
