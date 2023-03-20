@@ -12,8 +12,8 @@
 /* Переиспользуемый блок */
 /* rectangle */
 @import url(../blocks/rectangle/rectangle.css);
-@import url(../blocks/rectangle/_place/_add-button/rectangle_place_add-button.css);
-@import url(../blocks/rectangle/_place/_edit-button/rectangle_place_edit-button.css);
+@import url(../blocks/rectangle/_place/rectangle_place_add-button.css);
+@import url(../blocks/rectangle/_place/rectangle_place_edit-button.css);
 
 
 /* Основные блоки страницы "Mesto" */
