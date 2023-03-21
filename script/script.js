@@ -11,7 +11,10 @@ let occupationInput =  formElement.querySelector('.input__text_type_user-occupat
 
 function showPopUp() {
   popup.classList.add('popup_opened');
+  nameInput.setAttribute('placeholder', profileUserName.textContent);
+  occupationInput.setAttribute('placeholder', profileUserOccupation.textContent);
 }
+
 
 function closePopUp () {
   popup.classList.remove('popup_opened');
