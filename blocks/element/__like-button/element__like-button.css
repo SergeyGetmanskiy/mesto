@@ -3,7 +3,7 @@
   padding-right: 20px;
   border: 0;
   background-color: #ffffff;
-  cursor: url(../../../images/Cursor.png) 10 2, default;
+  cursor: url(../../../images/cursor.svg) 10 2, default;
 }
 
 .element__like-button:hover {

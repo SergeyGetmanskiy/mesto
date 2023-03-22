@@ -1,8 +1,7 @@
 .profile__info {
-  max-width: 336px;
   margin-left: 30px;
   display: grid;
-  grid-template-columns: 1fr 24px;
+  grid-template-columns: 1fr 26px;
   grid-template-rows: auto;
   grid-template-areas:
     "username edit-button"
@@ -12,11 +11,12 @@
 
 @media (max-width: 768px) {
   .profile__info {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 0;
-    gap: 6px;
+    width: 100%;
+    margin: 0;
+    grid-template-columns: 1fr 189px 1fr;
+    grid-template-areas:
+    ". username edit-button"
+    ". useroccupation .";
+  gap: 8px 10px;
   }
 }

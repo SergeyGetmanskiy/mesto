@@ -1,6 +1,4 @@
 .profile__add-button {
-  width: 150px;
-  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,8 +8,8 @@
   border: 0;
   align-self: center;
   background-color: #000000;
-  cursor: url(../../../images/Cursor.png) 10 2, default;
-}  
+  cursor: url(../../../images/cursor.svg) 10 2, default;
+}
 
 .profile__add-button:hover {
   opacity: .6;
@@ -20,7 +18,7 @@
 @media (max-width: 768px) {
   .profile__add-button {
     margin-left: 0;
-    margin-top: 36px;
-    width: 282px;
+    margin-top: 34px;
+    width: 100%;
   }
 }

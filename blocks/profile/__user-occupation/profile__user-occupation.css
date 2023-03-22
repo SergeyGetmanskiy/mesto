@@ -12,6 +12,7 @@
 
 @media (max-width: 768px) {
   .profile__user-occupation {
+    grid-column: 1 / span 3;
     text-align: center;
     font-size: 14px;
     line-height: 1.21;

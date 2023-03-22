@@ -3,7 +3,7 @@ let editButton=profile.querySelector('.profile__edit-button');
 let profileUserName = profile.querySelector('.profile__user-name');
 let profileUserOccupation = profile.querySelector('.profile__user-occupation');
 let popup=document.querySelector('.popup');
-let closeButton=popup.querySelector('.popup__close-btn');
+let closeButton=popup.querySelector('.button-image_place_close-popup');
 let formElement = document.querySelector('.input');
 let nameInput = formElement.querySelector('.input__text_type_user-name');
 let occupationInput =  formElement.querySelector('.input__text_type_user-occupation');
@@ -11,8 +11,8 @@ let occupationInput =  formElement.querySelector('.input__text_type_user-occupat
 
 function showPopUp() {
   popup.classList.add('popup_opened');
-  nameInput.setAttribute('placeholder', profileUserName.textContent);
-  occupationInput.setAttribute('placeholder', profileUserOccupation.textContent);
+  nameInput.setAttribute('value', profileUserName.textContent);
+  occupationInput.setAttribute('value', profileUserOccupation.textContent);
 }
 
 

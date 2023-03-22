@@ -10,10 +10,12 @@
 
 
 /* Переиспользуемый блок */
-/* rectangle */
-@import url(../blocks/rectangle/rectangle.css);
-@import url(../blocks/rectangle/_place/rectangle_place_add-button.css);
-@import url(../blocks/rectangle/_place/rectangle_place_edit-button.css);
+/* button-image */
+@import url(../blocks/button-image/button-image.css);
+@import url(../blocks/button-image/_place/button-image_place_edit-button.css);
+@import url(../blocks/button-image/_place/button-image_place_add-button.css);
+@import url(../blocks/button-image/_place/button-image_place_like-button.css);
+@import url(../blocks/button-image/_place/button-image_place_close-popup.css);
 
 
 /* Основные блоки страницы "Mesto" */
@@ -40,19 +42,17 @@
 @import url(../blocks/element/__like-button/_active/element__like-button_active.css);
 @import url(../blocks/element/__like-button/_disabled/element__like-button_disabled.css);
 @import url(../blocks/element/__location/element__location.css);
-@import url(../blocks/element/__mask/element__mask.css);
 @import url(../blocks/element/__top/element__top.css);
 
 /* popup */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/__close-btn/popup__close-btn.css);
 
 /* form */
 @import url(../blocks/form/form.css);
-@import url(../blocks/form/__submit-btn/form__submit-btn.css);
 @import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__submit-btn/form__submit-btn.css);
 
 /* input */
 @import url(../blocks/input/input.css);
