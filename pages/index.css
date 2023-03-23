@@ -10,12 +10,14 @@
 
 
 /* Переиспользуемый блок */
-/* button-image */
-@import url(../blocks/button-image/button-image.css);
-@import url(../blocks/button-image/_place/button-image_place_edit-button.css);
-@import url(../blocks/button-image/_place/button-image_place_add-button.css);
-@import url(../blocks/button-image/_place/button-image_place_like-button.css);
-@import url(../blocks/button-image/_place/button-image_place_close-popup.css);
+/* button */
+@import url(../blocks/button/button.css);
+@import url(../blocks/button/_place/button_place_add-button.css);
+@import url(../blocks/button/_place/button_place_close-popup.css);
+@import url(../blocks/button/_place/button_place_edit-button.css);
+@import url(../blocks/button/_place/button_place_like-button.css);
+@import url(../blocks/button/_active/button_active.css);
+@import url(../blocks/button/_disabled/button_disabled.css);
 
 
 /* Основные блоки страницы "Mesto" */
@@ -25,8 +27,6 @@
 
 /* profile */
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__image-container/profile__image-container.css);
 @import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/profile/__info/profile__info.css);
@@ -38,9 +38,6 @@
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__bottom/element__bottom.css);
 @import url(../blocks/element/__image/element__image.css);
-@import url(../blocks/element/__like-button/element__like-button.css);
-@import url(../blocks/element/__like-button/_active/element__like-button_active.css);
-@import url(../blocks/element/__like-button/_disabled/element__like-button_disabled.css);
 @import url(../blocks/element/__location/element__location.css);
 @import url(../blocks/element/__top/element__top.css);
 
@@ -51,14 +48,11 @@
 
 /* form */
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_type/form__input_type_user-name.css);
+@import url(../blocks/form/__input/_type/form__input_type_user-occupation.css);
 @import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__submit-btn/form__submit-btn.css);
-
-/* input */
-@import url(../blocks/input/input.css);
-@import url(../blocks/input/__text/input__text.css);
-@import url(../blocks/input/__text/_type/input__text_type_user-name.css);
-@import url(../blocks/input/__text/_type/input__text_type_user-occupation.css);
 
 /* footer */
 @import url(../blocks/footer/footer.css);

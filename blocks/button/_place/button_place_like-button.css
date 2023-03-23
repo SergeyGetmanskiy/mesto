@@ -1,0 +1,12 @@
+.button_place_like-button {
+  width: 22px;
+  height: 19px;
+  margin-right: 20px;
+  background-color: #ffffff;
+  background-image: url(../../../images/like-button.svg);
+  background-size: 22px 19px;
+}
+
+.button_place_like-button:hover {
+  opacity: .5;
+}

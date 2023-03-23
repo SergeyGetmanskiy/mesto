@@ -1,4 +1,4 @@
-.button-image_place_close-popup {
+.button_place_close-popup {
   position: absolute;
   top: -40px;
   right: -40px;
@@ -7,20 +7,19 @@
   height: 32px;
   background-image: url(../../../images/close-icon.svg);
   background-size: 32px 32px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
   border: 0;
 }
 
-.button-image_place_close-popup:hover {
+.button_place_close-popup:hover {
   opacity: .6;
 }
 
 @media (max-width: 768px) {
-  .button-image_place_close-popup {
+  .button_place_close-popup {
     top: -36px;
     right: 0;
     display: flex;
-    width: 20px;
-    height: 20px;
+    background-size: 20px 20px;
   }
 }

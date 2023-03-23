@@ -1,4 +1,4 @@
-.input__text {
+.form__input {
   width: 100%;
   height: 27px;
   margin: 0;
@@ -12,12 +12,12 @@
   border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
-.input__text:last-of-type {
+.form__input:last-of-type {
   margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
-  .input__text {
+  .form__input {
     width: 238px;
   }
 }
