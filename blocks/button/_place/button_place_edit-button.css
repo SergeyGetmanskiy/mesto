@@ -1,7 +1,6 @@
 .button_place_edit-button {
   grid-area: edit-button;
   margin-bottom: 10px;
-  padding: 0;
   align-self: flex-end;
   width: 24px;
   height: 24px;

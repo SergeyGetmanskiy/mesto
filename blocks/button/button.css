@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  cursor: url(../../../images/cursor.svg) 10 2, default;
+  cursor: url(../../images/cursor.svg) 10 2, default;
   background-color: #000000;
   transition: opacity .5s ease-in-out;
 }
