@@ -1,0 +1,10 @@
+.popup__container_type_image-popup {
+  width: 75vw;
+  height: 75vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  box-shadow: none;
+  border-radius: none;
+  padding: 0;
+}

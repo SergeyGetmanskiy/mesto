@@ -1,5 +1,6 @@
 .card__top {
   display: flex;
+  position: relative;
   max-width: 282px;
   max-height: 282px;
 }

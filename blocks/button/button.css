@@ -6,7 +6,7 @@
   border: 0;
   cursor: url(../../images/cursor.svg) 10 2, default;
   background-color: #000000;
-  transition: opacity .5s ease-in-out;
+  transition: opacity .2s ease-in-out;
 }
 
 .button:hover {

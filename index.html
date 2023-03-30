@@ -26,7 +26,8 @@
           <template id="card-template">
             <li class="card">
               <div class="card__top">
-                <img class="card__image" src="" alt="">
+                <img class="card__image" src="" alt="Фотография места">
+                <button class="button button_type_delete-button" type="button"></button>
               </div>
               <div class="card__bottom">
                 <h2 class="card__location"></h2>
@@ -55,6 +56,13 @@
               <input class="form__input form__input_type_location-link" type="text" value="Ссылка на картинку">
               <button class="form__submit-btn form__submit-btn_place_add-location" type="submit">Создать</button>
             </form>
+          </div>
+        </section>
+        <section class="popup popup_type_image-popup" >
+          <div class="popup__container">
+            <button class="button button_type_close-popup button_place_image-popup" type="button"></button>
+            <img class="popup__image" src="" alt="Фотография">
+            <p class="popup__caption"></p>
           </div>
         </section>
       </main>

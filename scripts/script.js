@@ -5,23 +5,27 @@ const profileUserName = profile.querySelector('.profile__user-name');
 const profileUserOccupation = profile.querySelector('.profile__user-occupation');
 
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const closeButtonEditProfile = document.querySelector('.button_place_edit-profile');
-const formEditProfile = document.querySelector('.form_type_edit-profile');
-const nameInput = document.querySelector('.form__input_type_user-name');
-const occupationInput =  document.querySelector('.form__input_type_user-occupation');
-const submitButtonEditProfile = document.querySelector('.form__submit-btn_place_edit-profile');
+const closeButtonEditProfile = popupEditProfile.querySelector('.button_place_edit-profile');
+const formEditProfile = popupEditProfile.querySelector('.form_type_edit-profile');
+const nameInput = popupEditProfile.querySelector('.form__input_type_user-name');
+const occupationInput =  popupEditProfile.querySelector('.form__input_type_user-occupation');
+const submitButtonEditProfile = popupEditProfile.querySelector('.form__submit-btn_place_edit-profile');
 
 const popupAddLocation = document.querySelector('.popup_type_add-location');
-const closeButtonAddLocation = document.querySelector('.button_place_add-location');
-const formAddLocation = document.querySelector('.form_type_add-location');
-const submitButtonAddLocation = document.querySelector('.form__submit-btn_place_add-location');
+const closeButtonAddLocation = popupAddLocation.querySelector('.button_place_add-location');
+const formAddLocation = popupAddLocation.querySelector('.form_type_add-location');
+const submitButtonAddLocation = popupAddLocation.querySelector('.form__submit-btn_place_add-location');
+
+const popupImage = document.querySelector('.popup_type_image-popup');
 
 const cards = document.querySelector('.cards');
-const cardTemplate = document.querySelector('#card-template').content;
+const cardTemplate = cards.querySelector('#card-template').content;
+const imagePopupButton = cardTemplate.querySelector('.card__image');
+
 const initialCards = [
   {
-    name: 'Великий Новгород',
-    link: './images/ivan-bobrov-Velikiy_Novgorod.jpg'
+    name: 'Санкт-Петербург',
+    link: './images/daniil-smetanin-St_Petersburg.jpg'
   },
   {
     name: 'Красная Поляна',
@@ -40,8 +44,8 @@ const initialCards = [
     link: './images/victor-malyushev-Karelia.jpg'
   },
   {
-    name: 'Санкт-Петербург',
-    link: './images/daniil-smetanin-St_Petersburg.jpg'
+    name: 'Великий Новгород',
+    link: './images/ivan-bobrov-Velikiy_Novgorod.jpg'
   }
 ];
 
@@ -82,27 +86,40 @@ function closePopUpAddLocation() {
 
 function handleFormSubmitAddLocation(evt) {
   evt.preventDefault();
-  const locationNameInput = document.querySelector('.form__input_type_location-name');
-  const locationLinkInput = document.querySelector('.form__input_type_location-link');
-  createCard(locationNameInput.value, locationLinkInput.value);
+  const locationNameInput = popupAddLocation.querySelector('.form__input_type_location-name');
+  const locationLinkInput = popupAddLocation.querySelector('.form__input_type_location-link');
+  handleCard(locationNameInput.value, locationLinkInput.value);
   locationNameInput.value = 'Название';
   locationLinkInput.value = 'Ссылка на картинку';
   closePopUpAddLocation();
 };
 
 
-// Обработчик добавления карточек
-function createCard(name, link) {
+// Обработчики попапа "Попап с картинкой"
+function showImagePopUp() {
+  popupImage.classList.add('popup_opened');
+}
+
+
+// Обработчик добавления / удаления карточки и лайка
+function handleCard(name, link) {
   let card = cardTemplate.querySelector('.card').cloneNode(true);
   card.querySelector('.card__location').textContent = name;
   card.querySelector('.card__image').setAttribute('src', link);
+  card.querySelector('.button_type_like-button').addEventListener('click', (evt) => {
+    evt.target.classList.toggle('button_active');
+  });
+  card.querySelector('.button_type_delete-button').addEventListener('click', () => {
+    const deleteCard = cards.querySelector('.button_type_delete-button').closest('.card');
+    deleteCard.remove();
+  });
   cards.prepend(card);
 }
 
 
 // Добавить начальные карточки
 for (i = 0; i < initialCards.length; i++) {
-  createCard(initialCards[i].name, initialCards[i].link);
+  handleCard(initialCards[i].name, initialCards[i].link);
 }
 
 
@@ -118,5 +135,20 @@ closeButtonEditProfile.addEventListener('click', closePopUpEditProfile);
 addButton.addEventListener('click', showPopUpAddLocation);
 formAddLocation.addEventListener('submit', handleFormSubmitAddLocation);
 closeButtonAddLocation.addEventListener('click', closePopUpAddLocation);
+
+// Слушатели попапа "Попап с картинкой"
+imagePopupButton.addEventListener('click', showImagePopUp);
+/*formAddLocation.addEventListener('submit', handleFormSubmitAddLocation);
+closeButtonAddLocation.addEventListener('click', closePopUpAddLocation);*/
+
+
+
+
+
+
+
+
+
+
 
 
