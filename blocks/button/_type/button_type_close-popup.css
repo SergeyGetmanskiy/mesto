@@ -1,4 +1,4 @@
-.button_place_close-popup {
+.button_type_close-popup {
   position: absolute;
   top: -40px;
   right: -40px;
@@ -9,12 +9,12 @@
   background-color: rgba(0, 0, 0, 0);
 }
 
-.button_place_close-popup:hover {
+.button_type_close-popup:hover {
   opacity: .6;
 }
 
 @media (max-width: 768px) {
-  .button_place_close-popup {
+  .button_type_close-popup {
     top: -36px;
     right: 0;
     display: flex;

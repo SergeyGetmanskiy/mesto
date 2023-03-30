@@ -1,4 +1,4 @@
-.button_place_like-button {
+.button_type_like-button {
   width: 22px;
   height: 19px;
   margin-right: 20px;
@@ -7,6 +7,6 @@
   background-size: 22px 19px;
 }
 
-.button_place_like-button:hover {
+.button_type_like-button:hover {
   opacity: .5;
 }

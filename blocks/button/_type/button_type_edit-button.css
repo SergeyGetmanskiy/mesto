@@ -1,4 +1,4 @@
-.button_place_edit-button {
+.button_type_edit-button {
   grid-area: edit-button;
   margin-bottom: 10px;
   align-self: flex-end;
@@ -11,7 +11,7 @@
 }
 
 @media (max-width: 768px) {
-  .button_place_edit-button {
+  .button_type_edit-button {
     width: 18px;
     height: 18px;
     margin-bottom: 0;
