@@ -16,38 +16,15 @@ const closeButtonAddLocation = popupAddLocation.querySelector('.button_place_add
 const formAddLocation = popupAddLocation.querySelector('.form_type_add-location');
 const submitButtonAddLocation = popupAddLocation.querySelector('.form__submit-btn_place_add-location');
 
-const popupImage = document.querySelector('.popup_type_image-popup');
+const popupViewImage = document.querySelector('.popup_type_image-popup');
+const containerViewImage = popupViewImage.querySelector('.popup__container');
+const imageViewImage = popupViewImage.querySelector('.popup__image');
+const captionViewImage = popupViewImage.querySelector('.popup__caption');
+const closeButtonImagePopup = popupViewImage.querySelector('.button_place_image-popup');
 
 const cards = document.querySelector('.cards');
 const cardTemplate = cards.querySelector('#card-template').content;
-const imagePopupButton = cardTemplate.querySelector('.card__image');
-
-const initialCards = [
-  {
-    name: 'Санкт-Петербург',
-    link: './images/daniil-smetanin-St_Petersburg.jpg'
-  },
-  {
-    name: 'Красная Поляна',
-    link: './images/olga-nayda-Krasnaya_Polyana.jpg'
-  },
-  {
-    name: 'Москва',
-    link: './images/alexandr-bormotin-Moscow.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: './images/philipp-trubchenko-Baikal.jpg'
-  },
-  {
-    name: 'Карелия',
-    link: './images/victor-malyushev-Karelia.jpg'
-  },
-  {
-    name: 'Великий Новгород',
-    link: './images/ivan-bobrov-Velikiy_Novgorod.jpg'
-  }
-];
+//const imagePopupButton = cardTemplate.querySelector('.card__image');
 
 
 // Обработчики попапа "Редактировать профиль"
@@ -97,7 +74,15 @@ function handleFormSubmitAddLocation(evt) {
 
 // Обработчики попапа "Попап с картинкой"
 function showImagePopUp() {
-  popupImage.classList.add('popup_opened');
+  popupViewImage.classList.add('popup_opened');
+  containerViewImage.classList.add('popup__container_type_image-popup');
+  const imageLink = cards.querySelector('.card__image').getAttribute('src');
+  imageViewImage.setAttribute('src', imageLink);
+  captionViewImage.textContent = cards.querySelector('.card__location').textContent;
+}
+
+function closePopUpImagePopup() {
+  popupViewImage.classList.remove('popup_opened');
 }
 
 
@@ -118,9 +103,9 @@ function handleCard(name, link) {
 
 
 // Добавить начальные карточки
-for (i = 0; i < initialCards.length; i++) {
-  handleCard(initialCards[i].name, initialCards[i].link);
-}
+initialCards.forEach((item) => {
+  handleCard(item.name, item.link);
+});
 
 
 // Слушатели попапа "Редактировать профиль"
@@ -137,9 +122,8 @@ formAddLocation.addEventListener('submit', handleFormSubmitAddLocation);
 closeButtonAddLocation.addEventListener('click', closePopUpAddLocation);
 
 // Слушатели попапа "Попап с картинкой"
-imagePopupButton.addEventListener('click', showImagePopUp);
-/*formAddLocation.addEventListener('submit', handleFormSubmitAddLocation);
-closeButtonAddLocation.addEventListener('click', closePopUpAddLocation);*/
+cards.addEventListener('click', showImagePopUp);
+closeButtonImagePopup.addEventListener('click', closePopUpImagePopup);
 
 
 
