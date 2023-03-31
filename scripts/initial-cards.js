@@ -5,7 +5,7 @@ const initialCards = [
   },
   {
     name: 'Красная Поляна',
-    link: './images/olga-nayda-Krasnaya_Polyana.jpg'
+    link: './images/arseny-togulev-Krasnaya_Polyana.jpg'
   },
   {
     name: 'Москва',
@@ -13,7 +13,7 @@ const initialCards = [
   },
   {
     name: 'Байкал',
-    link: './images/philipp-trubchenko-Baikal.jpg'
+    link: './images/alex-tolstov-Baikal.jpg'
   },
   {
     name: 'Карелия',
@@ -21,6 +21,6 @@ const initialCards = [
   },
   {
     name: 'Великий Новгород',
-    link: './images/ivan-bobrov-Velikiy_Novgorod.jpg'
+    link: './images/egor-myznik-Velikiy_Novgorod.jpg'
   }
 ];

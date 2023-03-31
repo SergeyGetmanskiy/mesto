@@ -2,7 +2,6 @@
   display: flex;
   position: relative;
   box-sizing: border-box;
-  width: 430px;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
@@ -17,4 +16,4 @@
     max-height: 322px;
     padding: 25px 22px;
   }
-}
+} 
