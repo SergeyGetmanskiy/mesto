@@ -37,29 +37,29 @@
           </template>
         </ul>
         <section class="popup popup_type_edit-profile" >
-          <div class="popup__container">
+          <div class="popup__container popup__container_type_form">
             <button class="button button_type_close-popup button_place_edit-profile" type="button"></button>
             <form class="form form_type_edit-profile" name="profile-editor">
               <h2 class="form__title">Редактировать профиль</h2>
-              <input class="form__input form__input_type_user-name" type="text">
-              <input class="form__input form__input_type_user-occupation" type="text">
+              <input class="form__input form__input_type_user-name" type="text" placeholder="Имя">
+              <input class="form__input form__input_type_user-occupation" type="text" placeholder="Вид деятельности">
               <button class="form__submit-btn form__submit-btn_place_edit-profile" type="submit">Сохранить</button>
             </form>
           </div>
         </section>
         <section class="popup popup_type_add-location" >
-          <div class="popup__container">
+          <div class="popup__container popup__container_type_form">
             <button class="button button_type_close-popup button_place_add-location" type="button"></button>
             <form class="form form_type_add-location" name="add-location">
               <h2 class="form__title">Новое место</h2>
-              <input class="form__input form__input_type_location-name" type="text" value="Название">
-              <input class="form__input form__input_type_location-link" type="text" value="Ссылка на картинку">
+              <input class="form__input form__input_type_location-name" type="text" placeholder="Название">
+              <input class="form__input form__input_type_location-link" type="text" placeholder="Ссылка на картинку">
               <button class="form__submit-btn form__submit-btn_place_add-location" type="submit">Создать</button>
             </form>
           </div>
         </section>
         <div class="popup popup_type_image-popup" >
-          <div class="popup__container">
+          <div class="popup__container popup__container_type_image-popup">
             <button class="button button_type_close-popup button_place_image-popup" type="button"></button>
             <img class="popup__image" src="#" alt="Фотография">
             <p class="popup__caption"></p>
