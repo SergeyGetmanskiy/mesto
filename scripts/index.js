@@ -33,7 +33,6 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  popup.classList.add('popup_closed');
 }
 
 function handleFormSubmitEditProfile(evt) {
@@ -45,24 +44,18 @@ function handleFormSubmitEditProfile(evt) {
 
 function handleFormSubmitAddLocation(evt) {
   evt.preventDefault();
-  addCard(locationNameInput.value, locationLinkInput.value);
-  locationNameInput.value = 'Название';
-  locationLinkInput.value = 'Ссылка на картинку';
+  const newCard = createCard(locationNameInput.value, locationLinkInput.value);
+  addCard(newCard);
   closePopup(popupAddLocation);
+  locationNameInput.value = '';
+  locationLinkInput.value = '';
 };
 
 // Обработчики карточек
-function createCard() {
-  initialCards.forEach(function(item) {
-    addCard(item.name, item.link);
-  });
-}
-
-function addCard(name, link) {
+function createCard(name, link) {
   const card = cardTemplate.querySelector('.card').cloneNode(true);
   card.querySelector('.card__location').textContent = name;
-  card.querySelector('.card__image').setAttribute('src', link);
-  cards.prepend(card);
+  card.querySelector('.card__image').src = link;
   card.querySelector('.button_type_like-button').addEventListener('click', (evt) => {
     evt.target.classList.toggle('button_active');
   });
@@ -74,15 +67,23 @@ function addCard(name, link) {
     imageViewImage.setAttribute('src', link);
     imageViewImage.setAttribute('alt', name);
     captionViewImage.textContent = card.querySelector('.card__location').textContent;
-  }
-  );
-  closeButtonImagePopup.addEventListener('click', () => {
-    closePopup(popupViewImage)
+  });
+  return card;
+};
+
+function addCard(card) {
+  cards.prepend(card);
+}
+
+function renderInitialCards() {
+  initialCards.forEach(function(item) {
+    const card = createCard(item.name, item.link);
+    addCard(card);
   });
 }
 
 // Добавить начальные карточки
-createCard();
+renderInitialCards();
 
 // Слушатели попапа "Редактировать профиль"
 buttonOpenEditProfilePopup.addEventListener('click', () => {
@@ -107,6 +108,11 @@ closeButtonAddCardPopup.addEventListener('click', () => {
 
 });
 formAddLocation.addEventListener('submit', handleFormSubmitAddLocation);
+
+// Слушатели попапа "Попап с картинкой"
+closeButtonImagePopup.addEventListener('click', () => {
+  closePopup(popupViewImage)
+});
 
 
 
