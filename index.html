@@ -39,10 +39,14 @@
         <section class="popup popup_type_edit-profile" >
           <div class="popup__container popup__container_type_form">
             <button class="button button_type_close-popup button_place_edit-profile" type="button"></button>
-            <form class="form form_type_edit-profile" name="profile-editor">
+            <form class="form form_type_edit-profile" name="profileEditor" novalidate>
               <h2 class="form__title">Редактировать профиль</h2>
-              <input class="form__input form__input_type_user-name" type="text" placeholder="Имя">
-              <input class="form__input form__input_type_user-occupation" type="text" placeholder="Вид деятельности">
+              <input class="form__input form__input_type_user-name" id="user-name-input" type="text" placeholder="Имя"
+              required minlength="2" maxlength="40">
+              <span class="form__input-error user-name-input-error"></span>
+              <input class="form__input form__input_type_user-occupation" id="user-occupation-input" type="text"
+              placeholder="Вид деятельности" required minlength="2" maxlength="200">
+              <span class="form__input-error user-occupation-input-error"></span>
               <button class="form__submit-btn form__submit-btn_place_edit-profile" type="submit">Сохранить</button>
             </form>
           </div>
@@ -50,10 +54,10 @@
         <section class="popup popup_type_add-location" >
           <div class="popup__container popup__container_type_form">
             <button class="button button_type_close-popup button_place_add-location" type="button"></button>
-            <form class="form form_type_add-location" name="add-location">
+            <form class="form form_type_add-location" name="addLocation" novalidate>
               <h2 class="form__title">Новое место</h2>
-              <input class="form__input form__input_type_location-name" type="text" placeholder="Название">
-              <input class="form__input form__input_type_location-link" type="text" placeholder="Ссылка на картинку">
+              <input class="form__input form__input_type_location-name" type="text" placeholder="Название" required minlength="2" maxlength="30">
+              <input class="form__input form__input_type_location-link" type="url" placeholder="Ссылка на картинку" required>
               <button class="form__submit-btn form__submit-btn_place_add-location" type="submit">Создать</button>
             </form>
           </div>
@@ -73,5 +77,6 @@
   </div>
   <script src="./scripts/initial-cards.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 </html>
