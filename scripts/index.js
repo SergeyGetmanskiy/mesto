@@ -29,6 +29,18 @@ const cardTemplate = cards.querySelector('#card-template').content;
 // Обработчики попапов
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', () => {       //Закрыть попап кликом на оверлей
+    closePopup(popup);
+  });
+  const popupContainer = popup.querySelector('.popup__container');
+  popupContainer.addEventListener('click', (evt) => {
+    evt.stopPropagation();
+  });
+  document.addEventListener('keydown', (evt) => {  //Закрыть попап клавишей ESC
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  })
 }
 
 function closePopup(popup) {
@@ -63,7 +75,7 @@ function createCard(name, link) {
     card.closest('.card').remove();
   });
   card.querySelector('.card__image').addEventListener('click', function showImagePopup(evt) {
-    popupViewImage.classList.toggle('popup_opened');
+    openPopup(popupViewImage);
     imageViewImage.setAttribute('src', link);
     imageViewImage.setAttribute('alt', name);
     captionViewImage.textContent = card.querySelector('.card__location').textContent;
@@ -115,6 +127,8 @@ formAddLocation.addEventListener('submit', handleFormSubmitAddLocation);
 closeButtonImagePopup.addEventListener('click', () => {
   closePopup(popupViewImage)
 });
+
+
 
 
 

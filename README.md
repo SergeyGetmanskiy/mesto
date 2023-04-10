@@ -6,6 +6,8 @@
 * Использование медиа-запросов (@media (max-width: Npx)) для создания адаптивности.
 * Брейкпойнты на 1280px и 768px.
 * Базовый Javascript: открытие / закрытие попапа, изменение содержимого текстовых полей.
-* Использованы методы JavaScript: addEventListener с событиями "click", "submit"; textContent, querySelector, classList.add, classList.remove и др.
+* Использованы методы JavaScript: addEventListener с событиями "click", "keydown", "input", "submit"; textContent, querySelector, classList.add, classList.remove и др.
+* Валидация форм методами JavaScript.
+* Закрытие попапов кликом на оверлей и нажатием клавиши "ESC".
 
 [Cсылка на проект](https://sergeygetmanskiy.github.io/mesto/ "Mesto")

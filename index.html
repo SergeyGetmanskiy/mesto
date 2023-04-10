@@ -37,18 +37,20 @@
           </template>
         </ul>
         <section class="popup popup_type_edit-profile" >
-          <div class="popup__container popup__container_type_form">
-            <button class="button button_type_close-popup button_place_edit-profile" type="button"></button>
-            <form class="form form_type_edit-profile" name="profileEditor" novalidate>
-              <h2 class="form__title">Редактировать профиль</h2>
-              <input class="form__input form__input_type_user-name" id="user-name-input" type="text" placeholder="Имя"
-                    required minlength="2" maxlength="40">
-              <span class="form__input-error user-name-input-error"></span>
-              <input class="form__input form__input_type_user-occupation" id="user-occupation-input" type="text"
-                    placeholder="Вид деятельности" required minlength="2" maxlength="200">
-              <span class="form__input-error user-occupation-input-error"></span>
-              <button class="form__submit-btn form__submit-btn_place_edit-profile" type="submit">Сохранить</button>
-            </form>
+          <div class="popup__overlay">
+            <div class="popup__container popup__container_type_form">
+              <button class="button button_type_close-popup button_place_edit-profile" type="button"></button>
+              <form class="form form_type_edit-profile" name="profileEditor" novalidate>
+                <h2 class="form__title">Редактировать профиль</h2>
+                <input class="form__input form__input_type_user-name" id="user-name-input" type="text" placeholder="Имя"
+                      required minlength="2" maxlength="40">
+                <span class="form__input-error user-name-input-error"></span>
+                <input class="form__input form__input_type_user-occupation" id="user-occupation-input" type="text"
+                      placeholder="Вид деятельности" required minlength="2" maxlength="200">
+                <span class="form__input-error user-occupation-input-error"></span>
+                <button class="form__submit-btn form__submit-btn_place_edit-profile" type="submit">Сохранить</button>
+              </form>
+            </div>
           </div>
         </section>
         <section class="popup popup_type_add-location" >
