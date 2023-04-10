@@ -1,5 +1,6 @@
 .popup__container {
   display: flex;
+  max-height: 330px;
   position: relative;
   box-sizing: border-box;
   align-items: center;
@@ -16,4 +17,4 @@
     max-height: 322px;
     padding: 25px 22px;
   }
-} 
+}

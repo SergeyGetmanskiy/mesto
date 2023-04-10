@@ -88,8 +88,8 @@ renderInitialCards();
 // Слушатели попапа "Редактировать профиль"
 buttonOpenEditProfilePopup.addEventListener('click', () => {
   openPopup(popupEditProfile);
-  nameInput.setAttribute('value', userName.textContent);
-  occupationInput.setAttribute('value', userOccupation.textContent);
+  nameInput.value = userName.textContent;
+  occupationInput.value = userOccupation.textContent;
 });
 
 closeButtonEditProfilePopup.addEventListener('click', () => {
