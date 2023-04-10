@@ -85,11 +85,13 @@ function renderInitialCards() {
 // Добавить начальные карточки
 renderInitialCards();
 
+//Автозаполнение полей попапа "Редактировать профиль"
+nameInput.value = userName.textContent;
+occupationInput.value = userOccupation.textContent;
+
 // Слушатели попапа "Редактировать профиль"
 buttonOpenEditProfilePopup.addEventListener('click', () => {
   openPopup(popupEditProfile);
-  nameInput.value = userName.textContent;
-  occupationInput.value = userOccupation.textContent;
 });
 
 closeButtonEditProfilePopup.addEventListener('click', () => {

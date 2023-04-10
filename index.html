@@ -56,8 +56,12 @@
             <button class="button button_type_close-popup button_place_add-location" type="button"></button>
             <form class="form form_type_add-location" name="addLocation" novalidate>
               <h2 class="form__title">Новое место</h2>
-              <input class="form__input form__input_type_location-name" type="text" placeholder="Название" required minlength="2" maxlength="30">
-              <input class="form__input form__input_type_location-link" type="url" placeholder="Ссылка на картинку" required>
+              <input class="form__input form__input_type_location-name" id="location-name-input" type="text" placeholder="Название"
+                    required minlength="2" maxlength="30">
+              <span class="form__input-error location-name-input-error"></span>
+              <input class="form__input form__input_type_location-link" id="location-link-input" type="url" placeholder="Ссылка на картинку"
+                    required>
+              <span class="form__input-error location-link-input-error"></span>
               <button class="form__submit-btn form__submit-btn_place_add-location" type="submit">Создать</button>
             </form>
           </div>
