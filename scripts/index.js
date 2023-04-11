@@ -27,21 +27,24 @@ const cards = document.querySelector('.cards');
 const cardTemplate = cards.querySelector('#card-template').content;
 
 // Обработчики попапов
+function handleEscKey (evt, popup) {
+  if (evt.key === 'Escape') {
+    console.log(popup);
+    closePopup(popup);
+  };
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-      };
+    handleEscKey(evt, popup);
   });
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-      };
+    handleEscKey(evt, popup);
   });
 }
 
@@ -135,21 +138,3 @@ popupList.forEach((popupElement) => {
     evt.stopPropagation();
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
