@@ -27,25 +27,21 @@ const cards = document.querySelector('.cards');
 const cardTemplate = cards.querySelector('#card-template').content;
 
 // Обработчики попапов
-function handleEscKey (evt, popup) {
+function handleEscKey (evt) {
   if (evt.key === 'Escape') {
-    console.log(popup);
+    const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   };
 }
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', (evt) => {
-    handleEscKey(evt, popup);
-  });
+  document.addEventListener('keydown', handleEscKey);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', (evt) => {
-    handleEscKey(evt, popup);
-  });
+  document.removeEventListener('keydown', handleEscKey);
 }
 
 function handleFormSubmitEditProfile(evt) {
