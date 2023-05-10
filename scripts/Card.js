@@ -1,7 +1,35 @@
 const popupViewImage = document.querySelector('.popup_type_image-popup');
+const popupContainer = popupViewImage.querySelector('.popup__container');
 const imageViewImage = popupViewImage.querySelector('.popup__image');
 const captionViewImage = popupViewImage.querySelector('.popup__caption');
 const closeButtonViewImage = popupViewImage.querySelector('.button_place_image-popup');
+
+export const initialCards = [
+  {
+    name: 'Санкт-Петербург',
+    link: './images/daniil-smetanin-St_Petersburg.jpg'
+  },
+  {
+    name: 'Красная Поляна',
+    link: './images/arseny-togulev-Krasnaya_Polyana.jpg'
+  },
+  {
+    name: 'Москва',
+    link: './images/alexandr-bormotin-Moscow.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: './images/alex-tolstov-Baikal.jpg'
+  },
+  {
+    name: 'Карелия',
+    link: './images/victor-malyushev-Karelia.jpg'
+  },
+  {
+    name: 'Великий Новгород',
+    link: './images/egor-myznik-Velikiy_Novgorod.jpg'
+  }
+];
 
 export class Card {
   constructor(data, templateSelector) {
@@ -19,26 +47,25 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._cardElement.querySelector('.button_type_like-button').addEventListener('click', () => {
+    this._cardElement.querySelector('.button_type_like-button').addEventListener('click', () => {   // Поставить лайк
       this._handleLikeButtonClick();
     });
-    this._cardElement.querySelector('.button_type_delete-button').addEventListener('click', () => {
+    this._cardElement.querySelector('.button_type_delete-button').addEventListener('click', () => { // Удалить карточку
       this._handleDeleteCard();
     });
-    this._cardElement.querySelector('.card__image').addEventListener('click', () => {
+    this._cardElement.querySelector('.card__image').addEventListener('click', () => {               // Открыть попап карточки кликом на изображение
       this._handleOpenPopup();
     });
-    closeButtonViewImage.addEventListener('click', () => {
+    closeButtonViewImage.addEventListener('click', () => {  // Закрыть попап кликом на крестик
       this._handleClosePopup();
     });
-    popupViewImage.addEventListener('click', () => {       //Закрыть попап кликом на оверлей
+    popupViewImage.addEventListener('click', () => {       // Закрыть попап кликом на оверлей
       this._handleClosePopup();
   });
-    const popupContainer = popupViewImage.querySelector('.popup__container');
     popupContainer.addEventListener('click', (evt) => {
     evt.stopPropagation();
   });
-    document.addEventListener('keydown', (evt) => {  //Закрыть попап клавишей ESC
+    document.addEventListener('keydown', (evt) => {  // Закрыть попап клавишей ESC
     if (evt.key === 'Escape') {
       this._handleClosePopup();
     }
