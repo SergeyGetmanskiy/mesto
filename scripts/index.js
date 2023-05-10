@@ -100,8 +100,8 @@ buttonOpenAddCardPopup.addEventListener('click', () => {
 
 closeButtonAddCardPopup.addEventListener('click', () => {
   closePopup(popupAddLocation);
-
 });
+
 formAddLocation.addEventListener('submit', handleFormSubmitAddLocation);
 
 
