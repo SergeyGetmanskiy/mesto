@@ -1,35 +1,8 @@
-const popupViewImage = document.querySelector('.popup_type_image-popup');
-const popupContainer = popupViewImage.querySelector('.popup__container');
+import { openPopup, closePopup } from "./utils.js";
+
+export const popupViewImage = document.querySelector('.popup_type_image-popup');
 const imageViewImage = popupViewImage.querySelector('.popup__image');
 const captionViewImage = popupViewImage.querySelector('.popup__caption');
-const closeButtonViewImage = popupViewImage.querySelector('.button_place_image-popup');
-
-export const initialCards = [
-  {
-    name: 'Санкт-Петербург',
-    link: './images/daniil-smetanin-St_Petersburg.jpg'
-  },
-  {
-    name: 'Красная Поляна',
-    link: './images/arseny-togulev-Krasnaya_Polyana.jpg'
-  },
-  {
-    name: 'Москва',
-    link: './images/alexandr-bormotin-Moscow.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: './images/alex-tolstov-Baikal.jpg'
-  },
-  {
-    name: 'Карелия',
-    link: './images/victor-malyushev-Karelia.jpg'
-  },
-  {
-    name: 'Великий Новгород',
-    link: './images/egor-myznik-Velikiy_Novgorod.jpg'
-  }
-];
 
 export class Card {
   constructor(data, templateSelector) {
@@ -56,20 +29,6 @@ export class Card {
     this._cardElement.querySelector('.card__image').addEventListener('click', () => {               // Открыть попап карточки кликом на изображение
       this._handleOpenPopup();
     });
-    closeButtonViewImage.addEventListener('click', () => {  // Закрыть попап кликом на крестик
-      this._handleClosePopup();
-    });
-    popupViewImage.addEventListener('click', () => {       // Закрыть попап кликом на оверлей
-      this._handleClosePopup();
-  });
-    popupContainer.addEventListener('click', (evt) => {
-    evt.stopPropagation();
-  });
-    document.addEventListener('keydown', (evt) => {  // Закрыть попап клавишей ESC
-    if (evt.key === 'Escape') {
-      this._handleClosePopup();
-    }
-  });
   }
 
   _handleLikeButtonClick() {
@@ -81,14 +40,14 @@ export class Card {
   }
 
   _handleOpenPopup() {
-    popupViewImage.classList.add('popup_opened');
+    openPopup(popupViewImage);
     imageViewImage.setAttribute('src', this._link);
     imageViewImage.setAttribute('alt', this._name);
     captionViewImage.textContent = this._cardElement.querySelector('.card__location').textContent;
   }
 
   _handleClosePopup() {
-    popupViewImage.classList.remove('popup_opened');
+    closePopup();
   }
 
   generateCard() {
@@ -96,6 +55,7 @@ export class Card {
     this._setEventListeners();
     this._cardElement.querySelector('.card__location').textContent = this._name;
     this._cardElement.querySelector('.card__image').src = this._link;
+    this._cardElement.querySelector('.card__image').alt = this._name;
     return this._cardElement;
   }
 }
