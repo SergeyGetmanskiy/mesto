@@ -1,4 +1,4 @@
-import { openPopup, closePopup } from "./utils.js";
+import { openPopup } from "./utils.js";
 
 export const popupViewImage = document.querySelector('.popup_type_image-popup');
 const imageViewImage = popupViewImage.querySelector('.popup__image');
@@ -46,16 +46,13 @@ export class Card {
     captionViewImage.textContent = this._cardElement.querySelector('.card__location').textContent;
   }
 
-  _handleClosePopup() {
-    closePopup();
-  }
-
   generateCard() {
     this._cardElement = this._getTemplate();
     this._setEventListeners();
     this._cardElement.querySelector('.card__location').textContent = this._name;
-    this._cardElement.querySelector('.card__image').src = this._link;
-    this._cardElement.querySelector('.card__image').alt = this._name;
+    this._cardImage = this._cardElement.querySelector('.card__image');
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     return this._cardElement;
   }
 }

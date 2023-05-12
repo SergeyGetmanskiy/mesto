@@ -42,8 +42,11 @@ function renderInitialCards() { // Добавить начальные карт�
 
 renderInitialCards();
 
-new FormValidator(params, '.form_type_edit-profile').enableValidation(); // Валидация формы "Редактировать профиль"
-new FormValidator(params, '.form_type_add-location').enableValidation(); // Валидация формы "Новое место"
+const validatorEditProfile = new FormValidator(params, '.form_type_edit-profile'); // Валидация формы "Редактировать профиль"
+validatorEditProfile.enableValidation();
+
+const validatorAddCard = new FormValidator(params, '.form_type_add-location'); // Валидация формы "Новое место"
+validatorAddCard.enableValidation();
 
 // Обработчики форм
 function handleFormSubmitEditProfile(evt) {
