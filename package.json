@@ -1,0 +1,11 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "* Вёрстка методом Desktop-first.\r * Использование медиа-запросов (@media (max-width: Npx)) для создания адаптивности.\r * Брейкпойнты на 1280px и 768px.\r * Базовый Javascript: открытие / закрытие попапа, изменение содержимого текстовых полей.\r * Использованы методы JavaScript: addEventListener с событиями \"click\", \"keydown\", \"input\", \"submit\"; textContent, querySelector, classList.add, classList.remove и др.\r * Валидация форм методами JavaScript.\r * Закрытие попапов кликом на оверлей и нажатием клавиши \"ESC\".",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergey Getmanskiy",
+  "license": "ISC"
+}

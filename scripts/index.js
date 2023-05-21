@@ -67,6 +67,18 @@ function handleFormSubmitAddLocation(evt) {
   formAddLocation.reset();
 };
 
+function handleFormClosure(form) {
+  const inputElements = Array.from(form.querySelectorAll('.form__input')); // Удалить выделение инвалидного поля ввода при закрытии попапа
+  inputElements.forEach(element => {
+    element.classList.remove(params.inputErrorClass);
+  });
+  const inputErrors = Array.from(form.querySelectorAll('.form__error')); // Удалить сообщение об ошибке при закрытии попапа
+  inputErrors.forEach(error => {
+    error.classList.remove('form__error_visible');
+    error.textContent = '';
+  });
+}
+
 // Слушатели попапа "Редактировать профиль"
 buttonOpenEditProfilePopup.addEventListener('click', () => {
   openPopup(popupEditProfile);
@@ -76,6 +88,7 @@ buttonOpenEditProfilePopup.addEventListener('click', () => {
 
 buttonCloseEditProfilePopup.addEventListener('click', () => {
   closePopup();
+  handleFormClosure(formEditProfile);
 });
 
 formEditProfile.addEventListener('submit', handleFormSubmitEditProfile);
@@ -87,6 +100,8 @@ buttonOpenAddCardPopup.addEventListener('click', () => {
 
 buttonCloseAddCardPopup.addEventListener('click', () => {
   closePopup();
+  formAddLocation.reset();
+  handleFormClosure(formAddLocation);
 });
 
 formAddLocation.addEventListener('submit', handleFormSubmitAddLocation);
