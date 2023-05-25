@@ -12,23 +12,25 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
 
-// Добавление начальных карточек
-const cardList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const card = new Card({
+// Функция создания карточки
+const createCard = (item) => {
+  const card = new Card({
     data: item,
     templateSelector: '#card-template',
     handleCardClick: (name, link) => { // Обработчик клика по карточке
-      const popupWithImage = new PopupWithImage('.popup_type_image-popup', name, link);
-      popupWithImage.open();
-      popupWithImage.setEventListeners();
-    }});
-    const cardElement = card.generateCard();
-    cardList.addItem(cardElement);
+      popupWithImage.open(name, link);
+  }});
+  const cardElement = card.generateCard();
+  return cardElement
+};
+
+// Добавление начальных карточек
+const cardList = new Section({
+  renderer: (item) => {
+    cardList.addItem(createCard(item));
   }
 }, '.cards');
-cardList.renderItems();
+cardList.renderItems(initialCards);
 
 // Экземпляр попапа "Редактировать профиль"
 const popupEditProfile = new PopupWithForm({
@@ -53,6 +55,7 @@ const userInfo = new UserInfo ({
 // Слушатель клика открытия попапа "Редактировать профиль"
 buttonOpenEditProfilePopup.addEventListener('click', () => {
   popupEditProfile.open();
+  validatorEditProfile.handleInputErrors();
   const user = userInfo.getUserInfo();      // Автозаполнение полей попапа "Редактировать профиль"
   nameInput.value = user.name;              //
   occupationInput.value = user.occupation;  //
@@ -62,22 +65,7 @@ buttonOpenEditProfilePopup.addEventListener('click', () => {
 const popupAddLocation = new PopupWithForm({
   popupSelector: '.popup_type_add-location',
   handleFormSubmit: (formData) => {
-    const newCard = new Section({
-      items: [formData],
-      renderer: (item) => {
-        const card = new Card({
-        data: item,
-        templateSelector: '#card-template',
-        handleCardClick: (name, link) => { // Обработчик клика по карточке
-          const popupWithImage = new PopupWithImage('.popup_type_image-popup', name, link);
-          popupWithImage.open();
-          popupWithImage.setEventListeners();
-        }});
-        const cardElement = card.generateCard();
-        cardList.addItem(cardElement);
-      }
-    }, '.cards');
-    newCard.renderItems();
+    cardList.renderItems([formData]);
     }
   }
 );
@@ -90,5 +78,11 @@ validatorAddCard.enableValidation();
 // Слушатель клика открытия попапа "Новое место"
 buttonOpenAddCardPopup.addEventListener('click', () => {
   popupAddLocation.open();
+  validatorAddCard.handleInputErrors();
+  validatorAddCard.toggleButtonState();
 });
+
+// Экземпляр попапа с картинкой
+const popupWithImage = new PopupWithImage('.popup_type_image-popup');
+popupWithImage.setEventListeners();
 

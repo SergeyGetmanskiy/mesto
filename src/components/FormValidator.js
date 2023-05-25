@@ -11,7 +11,6 @@ export class FormValidator {
 
   _showInputError(inputElement) {
     this._errorElement = this._form.querySelector(`.${inputElement.id}-error`);
-
     inputElement.classList.add(this._inputErrorClass);
     this._errorElement.textContent = inputElement.validationMessage;
     this._errorElement.classList.add(this._errorClass);
@@ -38,7 +37,7 @@ export class FormValidator {
     })
   };
 
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._buttonElement.disabled = true;
       this._buttonElement.classList.add(this._inactiveButtonClass);
@@ -52,11 +51,11 @@ export class FormValidator {
   _setEventListeners() {
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
-    this._toggleButtonState();
+    this.toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputElement);
+        this.toggleButtonState(inputElement);
       });
     });
   };
@@ -65,6 +64,12 @@ export class FormValidator {
     this._form = document.querySelector(this._formElement);
     this._setEventListeners();
       }
+
+  handleInputErrors() { // Удалить выделение инвалидных полей и сообщений об ошибке ввода при открытии попапа
+    this._inputList.forEach(input => {
+      this._hideInputError(input);
+    });
+  }
 };
 
 
