@@ -4,13 +4,27 @@
   "description": "* Вёрстка методом Desktop-first.\r * Использование медиа-запросов (@media (max-width: Npx)) для создания адаптивности.\r * Брейкпойнты на 1280px и 768px.\r * Базовый Javascript: открытие / закрытие попапа, изменение содержимого текстовых полей.\r * Использованы методы JavaScript: addEventListener с событиями \"click\", \"keydown\", \"input\", \"submit\"; textContent, querySelector, classList.add, classList.remove и др.\r * Валидация форм методами JavaScript.\r * Закрытие попапов кликом на оверлей и нажатием клавиши \"ESC\".",
   "main": "index.js",
   "scripts": {
-    "build": "rd /s /q dist && webpack"
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
   },
   "author": "Sergey Getmanskiy",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.4",
+    "cssnano": "^6.0.1",
+    "html-webpack-plugin": "^5.5.1",
+    "postcss-loader": "^7.3.0",
     "webpack": "^5.84.0",
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "core-js": "^3.30.2",
+    "mini-css-extract-plugin": "^2.7.6"
   }
 }

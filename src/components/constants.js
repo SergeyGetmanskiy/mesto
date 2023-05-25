@@ -1,27 +1,34 @@
+import piter from '../images/daniil-smetanin-St_Petersburg.jpg';
+import polyana from '../images/arseny-togulev-Krasnaya_Polyana.jpg';
+import moscow from '../images/alexandr-bormotin-moscow.jpg';
+import baikal from '../images/alex-tolstov-baikal.jpg';
+import karelia from '../images/victor-malyushev-karelia.jpg';
+import novgorod from '../images/egor-myznik-Velikiy_Novgorod.jpg';
+
 export const initialCards = [ // Массив начальных карточек
   {
     name: 'Санкт-Петербург',
-    link: './images/daniil-smetanin-St_Petersburg.jpg'
+    link: piter
   },
   {
     name: 'Красная Поляна',
-    link: './images/arseny-togulev-Krasnaya_Polyana.jpg'
+    link: polyana
   },
   {
     name: 'Москва',
-    link: './images/alexandr-bormotin-Moscow.jpg'
+    link: moscow
   },
   {
     name: 'Байкал',
-    link: './images/alex-tolstov-Baikal.jpg'
+    link: baikal
   },
   {
     name: 'Карелия',
-    link: './images/victor-malyushev-Karelia.jpg'
+    link: karelia
   },
   {
     name: 'Великий Новгород',
-    link: './images/egor-myznik-Velikiy_Novgorod.jpg'
+    link: novgorod
   }
 ];
 
