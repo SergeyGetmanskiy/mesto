@@ -38,31 +38,31 @@
         </ul>
         <section class="popup popup_type_edit-profile" >
             <div class="popup__container popup__container_type_form">
-              <button class="button button_type_close-popup button_place_edit-profile" type="button"></button>
+              <button class="button button_type_close-popup" type="button"></button>
               <form class="form form_type_edit-profile" name="profileEditor" novalidate>
                 <h2 class="form__title">Редактировать профиль</h2>
-                <input class="form__input form__input_type_user-name" id="user-name-input" type="text" placeholder="Имя"
+                <input class="form__input form__input_type_user-name" name="name" id="user-name-input" type="text" placeholder="Имя"
                       required minlength="2" maxlength="40">
                 <span class="form__error user-name-input-error"></span>
-                <input class="form__input form__input_type_user-occupation" id="user-occupation-input" type="text"
+                <input class="form__input form__input_type_user-occupation" name="occupation" id="user-occupation-input" type="text"
                       placeholder="Вид деятельности" required minlength="2" maxlength="200">
                 <span class="form__error user-occupation-input-error"></span>
-                <button class="form__submit-btn form__submit-btn_place_edit-profile" type="submit">Сохранить</button>
+                <button class="form__submit-btn" type="submit">Сохранить</button>
               </form>
             </div>
         </section>
         <section class="popup popup_type_add-location" >
           <div class="popup__container popup__container_type_form">
-            <button class="button button_type_close-popup button_place_add-location" type="button"></button>
+            <button class="button button_type_close-popup" type="button"></button>
             <form class="form form_type_add-location" name="addLocation" novalidate>
               <h2 class="form__title">Новое место</h2>
-              <input class="form__input form__input_type_location-name" id="location-name-input" type="text" placeholder="Название"
+              <input class="form__input form__input_type_location-name" name="name" id="location-name-input" type="text" placeholder="Название"
                     required minlength="2" maxlength="30">
               <span class="form__error location-name-input-error"></span>
-              <input class="form__input form__input_type_location-link" id="location-link-input" type="url" placeholder="Ссылка на картинку"
+              <input class="form__input form__input_type_location-link" name="link" id="location-link-input" type="url" placeholder="Ссылка на картинку"
                     required>
               <span class="form__error location-link-input-error"></span>
-              <button class="form__submit-btn form__submit-btn_place_add-location" type="submit">Создать</button>
+              <button class="form__submit-btn" type="submit">Создать</button>
             </form>
           </div>
         </section>
@@ -84,5 +84,10 @@
   <script type="module" src="./scripts/utils.js"></script>
   <script type="module" src="./scripts/Card.js"></script>
   <script type="module" src="./scripts/FormValidator.js"></script>
+  <script type="module" src="./scripts/Section.js"></script>
+  <script type="module" src="./scripts/Popup.js"></script>
+  <script type="module" src="./scripts/PopupWithImage.js"></script>
+  <script type="module" src="./scripts/PopupWithForm.js"></script>
+  <script type="module" src="./scripts/UserInfo.js"></script>
 </body>
 </html>

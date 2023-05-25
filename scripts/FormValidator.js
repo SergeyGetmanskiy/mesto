@@ -1,12 +1,3 @@
-export const params = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__submit-btn',
-  inactiveButtonClass: 'form__submit-btn_disabled',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__error_visible'
-};
-
 export class FormValidator {
   constructor(params, formElement) {
     this._formSelector = params.formSelector;

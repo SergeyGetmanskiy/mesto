@@ -1,112 +1,94 @@
-import { initialCards } from "./constants.js";
-import { openPopup, closePopup } from "./utils.js";
-import { Card, popupViewImage } from "./Card.js";
-import { FormValidator, params } from "./FormValidator.js";
+import { initialCards,
+         params,
+         nameInput,
+         occupationInput,
+         buttonOpenEditProfilePopup,
+         buttonOpenAddCardPopup, } from "./constants.js";
+import {  } from "./utils.js";
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+import Section from "./Section.js";
+import { PopupWithForm } from "./PopupWithForm.js";
+import { PopupWithImage } from "./PopupWithImage.js";
+import { UserInfo } from "./UserInfo.js";
 
-const cards = document.querySelector('.cards');
+// Добавление начальных карточек
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card({
+    data: item,
+    templateSelector: '#card-template',
+    handleCardClick: (name, link) => { // Обработчик клика по карточке
+      const popupWithImage = new PopupWithImage('.popup_type_image-popup', name, link);
+      popupWithImage.open();
+      popupWithImage.setEventListeners();
+    }});
+    const cardElement = card.generateCard();
+    cardList.addItem(cardElement);
+  }
+}, '.cards');
+cardList.renderItems();
 
-const closeButtonViewImage = popupViewImage.querySelector('.button_place_image-popup');
+// Экземпляр попапа "Редактировать профиль"
+const popupEditProfile = new PopupWithForm({
+  popupSelector: '.popup_type_edit-profile',
+  handleFormSubmit: (formData) => {
+    userInfo.setUserInfo(formData);
+    }
+  }
+);
+popupEditProfile.setEventListeners();
 
-const profile = document.querySelector('.profile');
-const userName = profile.querySelector('.profile__user-name');
-const userOccupation = profile.querySelector('.profile__user-occupation');
-const buttonOpenEditProfilePopup = profile.querySelector('.button_type_edit-button');
-const buttonOpenAddCardPopup = profile.querySelector('.button_type_add-button');
-
-const popupList = Array.from(document.querySelectorAll('.popup'));
-
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const buttonCloseEditProfilePopup = popupEditProfile.querySelector('.button_place_edit-profile');
-const formEditProfile = popupEditProfile.querySelector('.form_type_edit-profile');
-const nameInput = popupEditProfile.querySelector('.form__input_type_user-name');
-const occupationInput =  popupEditProfile.querySelector('.form__input_type_user-occupation');
-
-const popupAddLocation = document.querySelector('.popup_type_add-location');
-const locationNameInput = popupAddLocation.querySelector('.form__input_type_location-name');
-const locationLinkInput = popupAddLocation.querySelector('.form__input_type_location-link');
-const buttonCloseAddCardPopup = popupAddLocation.querySelector('.button_place_add-location');
-const formAddLocation = popupAddLocation.querySelector('.form_type_add-location');
-
-function createCard(data, templateId) { // Создать карточку
-  const card = new Card(data, templateId);
-  const cardElement = card.generateCard();
-  return cardElement;
-}
-
-function renderInitialCards() { // Добавить начальные карточки
-  initialCards.forEach((item) => {
-    const cardElement = createCard(item, '#card-template');
-    cards.append(cardElement);
-  });
-}
-
-renderInitialCards();
-
-const validatorEditProfile = new FormValidator(params, '.form_type_edit-profile'); // Валидация формы "Редактировать профиль"
+// Валидация формы "Редактировать профиль"
+const validatorEditProfile = new FormValidator(params, '.form_type_edit-profile');
 validatorEditProfile.enableValidation();
 
-const validatorAddCard = new FormValidator(params, '.form_type_add-location'); // Валидация формы "Новое место"
+// Экземпляр данных о пользователе
+const userInfo = new UserInfo ({
+  userNameSelector: '.profile__user-name',
+  userOccupationSelector: '.profile__user-occupation'
+});
+
+// Слушатель клика открытия попапа "Редактировать профиль"
+buttonOpenEditProfilePopup.addEventListener('click', () => {
+  popupEditProfile.open();
+  const user = userInfo.getUserInfo();      // Автозаполнение полей попапа "Редактировать профиль"
+  nameInput.value = user.name;              //
+  occupationInput.value = user.occupation;  //
+});
+
+// Экземпляр попапа "Новое место"
+const popupAddLocation = new PopupWithForm({
+  popupSelector: '.popup_type_add-location',
+  handleFormSubmit: (formData) => {
+    const newCard = new Section({
+      items: [formData],
+      renderer: (item) => {
+        const card = new Card({
+        data: item,
+        templateSelector: '#card-template',
+        handleCardClick: (name, link) => { // Обработчик клика по карточке
+          const popupWithImage = new PopupWithImage('.popup_type_image-popup', name, link);
+          popupWithImage.open();
+          popupWithImage.setEventListeners();
+        }});
+        const cardElement = card.generateCard();
+        cardList.addItem(cardElement);
+      }
+    }, '.cards');
+    newCard.renderItems();
+    }
+  }
+);
+popupAddLocation.setEventListeners();
+
+// Валидация формы "Новое место"
+const validatorAddCard = new FormValidator(params, '.form_type_add-location');
 validatorAddCard.enableValidation();
 
-// Обработчики форм
-function handleFormSubmitEditProfile(evt) {
-  evt.preventDefault();
-  userName.textContent = nameInput.value;
-  userOccupation.textContent = occupationInput.value;
-  closePopup(popupEditProfile);
-}
-
-function handleFormSubmitAddLocation(evt) {
-  evt.preventDefault();
-  const inputData = {};
-  inputData.name = locationNameInput.value;
-  inputData.link = locationLinkInput.value;
-  const cardElement = createCard(inputData, '#card-template');
-  cards.prepend(cardElement);
-  closePopup(popupAddLocation);
-  formAddLocation.reset();
-};
-
-function handleFormClosure(form) {
-  const inputElements = Array.from(form.querySelectorAll('.form__input')); // Удалить выделение инвалидного поля ввода при закрытии попапа
-  inputElements.forEach(element => {
-    element.classList.remove(params.inputErrorClass);
-  });
-  const inputErrors = Array.from(form.querySelectorAll('.form__error')); // Удалить сообщение об ошибке при закрытии попапа
-  inputErrors.forEach(error => {
-    error.classList.remove('form__error_visible');
-    error.textContent = '';
-  });
-}
-
-// Слушатели попапа "Редактировать профиль"
-buttonOpenEditProfilePopup.addEventListener('click', () => {
-  openPopup(popupEditProfile);
-  nameInput.value = userName.textContent; // Автозаполнение полей попапа "Редактировать профиль"
-  occupationInput.value = userOccupation.textContent;
-});
-
-buttonCloseEditProfilePopup.addEventListener('click', () => {
-  closePopup();
-  handleFormClosure(formEditProfile);
-});
-
-formEditProfile.addEventListener('submit', handleFormSubmitEditProfile);
-
-// Слушатели попапа "Новое место"
+// Слушатель клика открытия попапа "Новое место"
 buttonOpenAddCardPopup.addEventListener('click', () => {
-  openPopup(popupAddLocation);
+  popupAddLocation.open();
 });
 
-buttonCloseAddCardPopup.addEventListener('click', () => {
-  closePopup();
-  formAddLocation.reset();
-  handleFormClosure(formAddLocation);
-});
-
-formAddLocation.addEventListener('submit', handleFormSubmitAddLocation);
-
-// Слушатель попапа "Модальное окно с картинкой"
-closeButtonViewImage.addEventListener('click', () => {  // Закрыть попап кликом на крестик
-  closePopup();
-});

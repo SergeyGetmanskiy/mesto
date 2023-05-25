@@ -1,14 +1,9 @@
-import { openPopup } from "./utils.js";
-
-export const popupViewImage = document.querySelector('.popup_type_image-popup');
-const imageViewImage = popupViewImage.querySelector('.popup__image');
-const captionViewImage = popupViewImage.querySelector('.popup__caption');
-
 export class Card {
-  constructor(data, templateSelector) {
+  constructor({data, templateSelector, handleCardClick}) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -20,14 +15,10 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._cardElement.querySelector('.button_type_like-button').addEventListener('click', () => {   // Поставить лайк
-      this._handleLikeButtonClick();
-    });
-    this._cardElement.querySelector('.button_type_delete-button').addEventListener('click', () => { // Удалить карточку
-      this._handleDeleteCard();
-    });
-    this._cardElement.querySelector('.card__image').addEventListener('click', () => {               // Открыть попап карточки кликом на изображение
-      this._handleOpenPopup();
+    this._cardElement.querySelector('.button_type_like-button').addEventListener('click', this._handleLikeButtonClick.bind(this));   // Поставить лайк
+    this._cardElement.querySelector('.button_type_delete-button').addEventListener('click', this._handleDeleteCard.bind(this));  // Удалить карточку
+    this._cardElement.querySelector('.card__image').addEventListener('click', () => { // Открыть попап карточки кликом на изображение
+      this._handleCardClick(this._name, this._link);
     });
   }
 
@@ -37,13 +28,6 @@ export class Card {
 
   _handleDeleteCard() {
     this._cardElement.closest('.card').remove();
-  }
-
-  _handleOpenPopup() {
-    openPopup(popupViewImage);
-    imageViewImage.setAttribute('src', this._link);
-    imageViewImage.setAttribute('alt', this._name);
-    captionViewImage.textContent = this._cardElement.querySelector('.card__location').textContent;
   }
 
   generateCard() {
