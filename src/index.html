@@ -13,10 +13,12 @@
       </header>
       <main class="main">
         <section class="profile">
-          <img class="profile__image profile__image-container" src="<%=require('./images/Cousteau.jpg')%>" alt="Аватарка">
+          <div class="profile__image-container">
+            <img class="profile__image" id="avatar" src="" alt="Аватарка">
+          </div>
           <div class="profile__info">
-            <h1 class="profile__user-name">Жак-Ив Кусто</h1>
-            <p class="profile__user-occupation">Исследователь океана</p>
+            <h1 class="profile__user-name" id="name"></h1>
+            <p class="profile__user-occupation" id="about"></p>
             <button class="button button_type_edit-button" type="button"></button>
           </div>
           <button class="button button_type_add-button" type="button"></button>
@@ -30,7 +32,10 @@
               </div>
               <div class="card__bottom">
                 <h2 class="card__location"></h2>
-                <button class="button button_type_like-button" type="button"></button>
+                <div class="card__like-container">
+                  <button class="button button_type_like-button" type="button"></button>
+                  <output class="card__like-count" id="like-count">0</output>
+                </div>
               </div>
             </li>
           </template>
@@ -43,12 +48,24 @@
                 <input class="form__input form__input_type_user-name" name="name" id="user-name-input" type="text" placeholder="Имя"
                       required minlength="2" maxlength="40">
                 <span class="form__error user-name-input-error"></span>
-                <input class="form__input form__input_type_user-occupation" name="occupation" id="user-occupation-input" type="text"
+                <input class="form__input form__input_type_user-occupation" name="about" id="user-occupation-input" type="text"
                       placeholder="Вид деятельности" required minlength="2" maxlength="200">
                 <span class="form__error user-occupation-input-error"></span>
-                <button class="form__submit-btn" type="submit">Сохранить</button>
+                <button class="form__submit-btn form__submit-btn_type_edit-profile" type="submit">Сохранить</button>
               </form>
             </div>
+        </section>
+        <section class="popup popup_type_edit-avatar" >
+          <div class="popup__container popup__container_type_edit-avatar">
+            <button class="button button_type_close-popup" type="button"></button>
+            <form class="form form_type_edit-avatar" name="avatarEditor" novalidate>
+              <h2 class="form__title">Обновить аватар</h2>
+              <input class="form__input form__input_type_avatar-link" name="link" id="user-avatar-input" type="url" placeholder="http://somewebsite.com/someimage.jpg"
+                    required>
+              <span class="form__error user-avatar-input-error"></span>
+              <button class="form__submit-btn form__submit-btn_type_edit-avatar" type="submit">Сохранить</button>
+            </form>
+          </div>
         </section>
         <section class="popup popup_type_add-location" >
           <div class="popup__container popup__container_type_form">
@@ -61,7 +78,7 @@
               <input class="form__input form__input_type_location-link" name="link" id="location-link-input" type="url" placeholder="Ссылка на картинку"
                     required>
               <span class="form__error location-link-input-error"></span>
-              <button class="form__submit-btn" type="submit">Создать</button>
+              <button class="form__submit-btn form__submit-btn_type_add-location" type="submit">Создать</button>
             </form>
           </div>
         </section>
@@ -70,6 +87,15 @@
             <button class="button button_type_close-popup button_place_image-popup" type="button"></button>
             <img class="popup__image" src="#" alt="Фотография">
             <p class="popup__caption"></p>
+          </div>
+        </div>
+        <div class="popup popup_type_confirmation" >
+          <div class="popup__container popup__container_type_confirmation">
+            <button class="button button_type_close-popup" type="button"></button>
+            <form class="form form_type_confirmation" name="confirmation">
+              <h2 class="form__title">Вы уверены?</h2>
+              <button class="form__submit-btn" type="submit">Да</button>
+            </form>
           </div>
         </div>
       </main>
