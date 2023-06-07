@@ -10,4 +10,4 @@
 * Валидация форм методами JavaScript.
 * Закрытие попапов кликом на оверлей и нажатием клавиши "ESC".
 
-[Cсылка на проект](https://sergeygetmanskiy.github.io/mesto/ "Mesto")
+[Cсылка на проект](https://mesto.nomoreparties.co/v1/cohort-68/ "Mesto")
