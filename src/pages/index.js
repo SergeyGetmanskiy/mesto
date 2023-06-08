@@ -77,7 +77,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, initialCards]) => {
     userId = userData._id;
     userInfo.setUserInfo(userData);
-    console.log(initialCards);
     cardList.renderItems(initialCards);
   })
   .catch(err => {
@@ -91,12 +90,12 @@ const popupEditProfile = new PopupWithForm({
     api.patchUserInfo(formData)
       .then((result) => {
         userInfo.setUserInfo(result);
+        popupEditProfile.close();
       })
       .catch((err) => {
         console.log(err);
     })
       .finally(() => {
-        popupEditProfile.close();
         setTimeout(() => {
           submitBtn.textContent = submitBtnInitialText;
         }, 500);
@@ -124,12 +123,12 @@ const popupEditAvatar = new PopupWithForm({
     api.patchUserAvatar(formData)
       .then((result) => {
         userInfo.setUserInfo(result);
+        popupEditAvatar.close();
     })
       .catch((err) => {
         console.log(err);
     })
       .finally(() => {
-        popupEditAvatar.close();
         setTimeout(() => {
           submitBtn.textContent = submitBtnInitialText;
         }, 500);
@@ -157,16 +156,15 @@ const popupAddLocation = new PopupWithForm({
     api.postUserCard(formData)
       .then((result) => {
       cardList.addItem(createCard(result));
+      popupAddLocation.close();
     })
       .catch((err) => {
         console.log(err);
     })
       .finally(() => {
-        popupAddLocation.close();
         setTimeout(() => {
           submitBtn.textContent = submitBtnInitialText;
         }, 500);
-
     });
     }
   }
