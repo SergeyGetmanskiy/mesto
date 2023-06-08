@@ -1,13 +1,8 @@
 import './index.css'
 import { params,
-         nameInput,
-         occupationInput,
          buttonOpenEditProfilePopup,
          buttonOpenAddCardPopup,
-         avatarImage,
-         submitBtnTypeEditProfile,
-         submitBtnTypeEditAvatar,
-         submitBtnTypeAddLocation } from "../utils/constants.js";
+         avatarImage } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
@@ -16,6 +11,9 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { UserInfo } from "../components/UserInfo.js";
+
+// Идентификатор пользователя
+let userId
 
 // Экземпляр класса Api ///////////////////////////////////////////////////////////////////
 const api = new Api({
@@ -26,20 +24,11 @@ const api = new Api({
   }
 });
 
-// Экземпляр класса "данных о пользователе" ////////////////////////////////////////////////////
+// Экземпляр класса "данных о пользователе" //////////////////////////////////////////////
 const userInfo = new UserInfo ({
   userNameSelector: '#name',
   userOccupationSelector: '#about',
   userAvatarSelector: '#avatar'
-});
-
-// Загрузка информации о пользователе с сервера /////////////////////////////////////////
-api.getUserInfo()
-  .then((result) => {
-    userInfo.setUserInfo(result);
-})
-  .catch((err) => {
-      console.log(err);
 });
 
 // Функция создания карточки /////////////////////////////////////////////////////////////
@@ -56,8 +45,7 @@ const createCard = (item) => {
     putLike: (cardId) => {
       api.putLike(cardId)
         .then(result => {
-          let card = document.getElementById(`${cardId}`);
-          card.querySelector('#like-count').textContent = result.likes.length;
+          card.handleLikeButtonClick(result);
         })
         .catch((err) => {
           console.log(err);
@@ -66,44 +54,53 @@ const createCard = (item) => {
     deleteLike: (cardId) => {
       api.deleteLike(cardId)
         .then(result => {
-          let card = document.getElementById(`${cardId}`);
-          card.querySelector('#like-count').textContent = result.likes.length;
+          card.handleLikeButtonClick(result);
         })
         .catch((err) => {
           console.log(err);
       });
     }
-});
+}, userId);
   const cardElement = card.generateCard();
   return cardElement
 };
 
-// Загрузка начальных карточек с сервера /////////////////////////////////////////////////
+// Экземпляр списка карточек ///////////////////////////////////////////////////////////
 const cardList = new Section({
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }
 }, '.cards');
 
-api.getInitialCards()
-  .then((result) => {
-    cardList.renderItems(result);
-})
-  .catch((err) => {
+// Promise.all для загрузки карточек и данных о пользователе ////////////////////////////
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, initialCards]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    console.log(initialCards);
+    cardList.renderItems(initialCards);
+  })
+  .catch(err => {
     console.log(err);
-});
+  });
 
 // Экземпляр попапа "Редактировать профиль" /////////////////////////////////////////////
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_type_edit-profile',
-  handleFormSubmit: (formData) => {
+  handleFormSubmit: (formData, submitBtn, submitBtnInitialText) => {
     api.patchUserInfo(formData)
       .then((result) => {
         userInfo.setUserInfo(result);
       })
       .catch((err) => {
         console.log(err);
-    });
+    })
+      .finally(() => {
+        popupEditProfile.close();
+        setTimeout(() => {
+          submitBtn.textContent = submitBtnInitialText;
+        }, 500);
+      });
     }
   }
 );
@@ -115,25 +112,27 @@ validatorEditProfile.enableValidation();
 
 // Слушатель клика открытия попапа "Редактировать профиль" ///////////////////////////
 buttonOpenEditProfilePopup.addEventListener('click', () => {
-  submitBtnTypeEditProfile.textContent = 'Сохранить';
   popupEditProfile.open();
+  popupEditProfile.setInputValues(userInfo.getUserInfo());
   validatorEditProfile.handleInputErrors();
-  const user = userInfo.getUserInfo();      // Автозаполнение полей попапа "Редактировать профиль"
-  nameInput.value = user.name;              //
-  occupationInput.value = user.about;  //
 });
 
 // Экземпляр попапа "Обновить аватар" /////////////////////////////////////////////////
 const popupEditAvatar = new PopupWithForm({
   popupSelector: '.popup_type_edit-avatar',
-  handleFormSubmit: (formData) => {
-    console.log(formData);
+  handleFormSubmit: (formData, submitBtn, submitBtnInitialText) => {
     api.patchUserAvatar(formData)
       .then((result) => {
-        avatarImage.src = result.avatar;
+        userInfo.setUserInfo(result);
     })
       .catch((err) => {
         console.log(err);
+    })
+      .finally(() => {
+        popupEditAvatar.close();
+        setTimeout(() => {
+          submitBtn.textContent = submitBtnInitialText;
+        }, 500);
     });
     }
   }
@@ -146,7 +145,6 @@ validatorEditAvatar.enableValidation();
 
 // Слушатель клика открытия попапа "Обновить аватар" /////////////////////////////////
 avatarImage.addEventListener('click', () => {
-  submitBtnTypeEditAvatar.textContent = 'Сохранить';
   popupEditAvatar.open();
   validatorEditAvatar.handleInputErrors();
   validatorEditAvatar.toggleButtonState();
@@ -155,13 +153,20 @@ avatarImage.addEventListener('click', () => {
 // Экземпляр попапа "Новое место" /////////////////////////////////////////////////////
 const popupAddLocation = new PopupWithForm({
   popupSelector: '.popup_type_add-location',
-  handleFormSubmit: (formData) => {
+  handleFormSubmit: (formData, submitBtn, submitBtnInitialText) => {
     api.postUserCard(formData)
       .then((result) => {
       cardList.addItem(createCard(result));
     })
       .catch((err) => {
         console.log(err);
+    })
+      .finally(() => {
+        popupAddLocation.close();
+        setTimeout(() => {
+          submitBtn.textContent = submitBtnInitialText;
+        }, 500);
+
     });
     }
   }
@@ -174,7 +179,6 @@ validatorAddCard.enableValidation();
 
 // Слушатель клика открытия попапа "Новое место" ////////////////////////////////////
 buttonOpenAddCardPopup.addEventListener('click', () => {
-  submitBtnTypeAddLocation.textContent = 'Создать';
   popupAddLocation.open();
   validatorAddCard.handleInputErrors();
   validatorAddCard.toggleButtonState();
@@ -191,6 +195,7 @@ const popupWithConfirmation = new PopupWithConfirmation({
     api.deleteUserCard(cardId)
     .then(() => {
       document.getElementById(`${cardId}`).remove();
+      popupWithConfirmation.close();
   })
     .catch((err) => {
     console.log(err);

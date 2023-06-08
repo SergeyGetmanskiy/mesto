@@ -1,15 +1,17 @@
 export class Card {
-  constructor({data, templateSelector, handleCardClick, handleDeleteClick, putLike, deleteLike}) {
+  constructor({data, templateSelector, handleCardClick, handleDeleteClick, putLike, deleteLike}, userId) {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
     this._ownerId = data.owner._id;
     this._likeCount = data.likes.length;
+    this._likeOwners = Array.from(data.likes);
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
     this._putLike = putLike;
     this._deleteLike = deleteLike;
+    this._userId = userId;
   }
 
   _getTemplate() {
@@ -34,30 +36,37 @@ export class Card {
 
   _checkLikeButtonState() {
     if(!this._likeButton.classList.contains('button_active')) {
-      this._toggleLikeButton();
       this._putLike(this._id);
     } else {
-      this._toggleLikeButton();
       this._deleteLike(this._id);
     }
   }
 
-  _toggleLikeButton() {
-    this._likeButton.classList.toggle('button_active');
-  }
+  // Обработчик счетчика лайков и закрашивания сердечка
+  handleLikeButtonClick(serverResponse) {
+  this._likeCountElement.textContent = serverResponse.likes.length;
+  this._likeButton.classList.toggle('button_active');
+}
+
 
   generateCard() {
     this._cardElement = this._getTemplate();
     this._cardElement.id = this._id;
     this._deleteButton = this._cardElement.querySelector('.button_type_delete-button');
     this._likeButton = this._cardElement.querySelector('.button_type_like-button');
-    if(this._ownerId === '972f9c4c15e96e81412b9ce9') {
+    this._likeCountElement = this._cardElement.querySelector('#like-count');
+    if(this._likeOwners.some(owner => {return owner._id === this._userId})) {
+      this._likeButton.classList.add('button_active');
+    } else {
+      this._likeButton.classList.remove('button_active');
+    }
+    if(this._ownerId === this._userId) {
       this._deleteButton.classList.remove('button_hidden');
     } else {
       this._deleteButton.classList.add('button_hidden');
     }
     this._cardElement.querySelector('.card__location').textContent = this._name;
-    this._cardElement.querySelector('#like-count').textContent = this._likeCount;
+    this._likeCountElement.textContent = this._likeCount;
     this._cardImage = this._cardElement.querySelector('.card__image');
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;

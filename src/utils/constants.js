@@ -13,12 +13,3 @@ export const params = {
   inputErrorClass: 'form__input_type_error',
   errorClass: 'form__error_visible'
 };
-
-// Переменные для UserInfo.js
-export const nameInput = document.querySelector('.form__input_type_user-name');
-export const occupationInput =  document.querySelector('.form__input_type_user-occupation');
-
-// Переменные для кнопок сабмитов
-export const submitBtnTypeEditProfile = document.querySelector('.form__submit-btn_type_edit-profile');
-export const submitBtnTypeEditAvatar = document.querySelector('.form__submit-btn_type_edit-avatar');
-export const submitBtnTypeAddLocation = document.querySelector('.form__submit-btn_type_add-location');
