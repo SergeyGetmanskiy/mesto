@@ -1,17 +1,17 @@
-# Проект: Место
+# Project: Mesto
 
-### Проект представляет собой аналог популярных соцсетей. Представлена возможность редактировать профиль пользователя, добавлять / удалять / лайкать / посты.
-#### *Особенности проекта:*
-* Вёрстка методом Desktop-first.
-* Использование медиа-запросов (@media (max-width: Npx)) для создания адаптивности.
-* Брейкпойнты на 1280px и 768px.
-* Базовый Javascript: открытие / закрытие попапа, изменение содержимого текстовых полей.
-* Использованы методы JavaScript: addEventListener с событиями "click", "keydown", "input", "submit"; textContent, querySelector, classList.add, classList.remove и др.
-* Валидация форм методами JavaScript.
-* Закрытие попапов кликом на оверлей и нажатием клавиши "ESC".
+### The project is a shallow copy of a popular social media. One can edit user's profile, add / remove / like user's posts. 
+#### *Project's features:*
+* Code by Desktop-first approach .
+* Extensive use of media queries (@media (max-width: Npx)) for responsive web design.
+* Breakpoints at 1280px & 768px.
+* Basic Javascript: open / close popup window, editable input fields.
+* The following JavaScript methods have been used: addEventListener with events like: "click", "keydown", "input", "submit"; textContent, querySelector, classList.add, classList.remove etc.
+* JavaScript-side form validation.
+* Closure of popups by clicking on overlay and by pressing the `ESC` key.
 
-Стек: HTML5, CSS3, Javascript ES6
+Stack: HTML5, CSS3, Javascript ES6
 
-[Cсылка на проект](https://mesto.nomoreparties.co/v1/cohort-68/ "Mesto")
+[Project's link](https://mesto.nomoreparties.co/v1/cohort-68/ "Mesto")
 
-Проект завершен.
+Project complete.
